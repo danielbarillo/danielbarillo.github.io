@@ -1,0 +1,14 @@
+{
+  "resourceName": "s3elvawebstorage8c3617e6",
+  "bucketName": "elvaweb-storage-8c3617e6",
+  "policyUUID": "88edc30d",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "READ"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ]
+}

@@ -1,0 +1,116 @@
+---
+/* STATIC CMS ADMIN PAGE */
+import { page, settings, post, project } from "@cms/index.mjs";
+import logo from "@icons/logo.svg";
+import newsIcon from "@icons/news.svg";
+import pageIcon from "@icons/page.svg";
+import settingsIcon from "@icons/settings.svg";
+import portfolioIcon from "@icons/portfolio.svg";
+
+const lang = import.meta.env.WEBSITE_LANGUAGE;
+const url = Astro.site;
+
+const config = {
+  locale: lang,
+  site_url: url,
+  logo_url: "src/assets/elva_logo.svg",
+  local_backend: true,
+  backend: {
+    name: "github",
+    repo: "danielbarillo/elvaweb",
+  },
+  publish_mode: 'editorial_workflow',
+  search: "true",
+  media_folder: "src/assets",
+  public_folder: "src/assets",
+  media_library: {
+    max_file_size: 2012000,
+    folder_support: true,
+  },
+  collections: [page, post, project, settings],
+};
+---
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elva Admin</title>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/@staticcms/app@^v3.3.11/dist/main.css"
+    />
+    <script
+      is:inline
+      type="text/javascript"
+      src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+    <style is:global>
+      #cms-root,
+      #nc-root,
+      body {
+        .flex.flex-col.min-h-full,
+        .w-editor-only.max-w-full {
+          padding-bottom: 10rem;
+        }
+
+        .MuiMenuButton-root {
+          background-color: #cccccc;
+        }
+
+        .flex.flex-col.min-h-full.w-full {
+          @apply pb-20;
+        }
+
+        .CMS_Button_contained-primary {
+          background-color: #0070f3 !important;
+        }
+
+        .CMS_Button_contained-success,
+        button.CMS_Button_contained-success {
+          background: green !important;
+        }
+
+        .CMS_Button_contained-error {
+          background: red !important;
+        }
+
+        [data-testid="expand-button"] label,
+        [data-testid="list-expand-button"] label {
+          font-size: 1rem !important;
+          text-transform: uppercase;
+        }
+
+        .MuiCollapse-wrapperInner > div {
+          border-bottom: 5px dotted rgba(59, 130, 246, 0.5);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <script
+      is:inline
+      src="https://unpkg.com/@staticcms/app@^v3.3.11/dist/static-cms-app.js"
+    ></script>
+    <script
+      is:inline
+      define:vars={{
+        config,
+        logo,
+        newsIcon,
+        pageIcon,
+        settingsIcon,
+        portfolioIcon,
+      }}
+    >
+      window.CMS.init({ config });
+
+      CMS.registerIcon("house", () => h("img", { src: logo.src }));
+      CMS.registerIcon("news", () => h("img", { src: newsIcon.src }));
+      CMS.registerIcon("page", () => h("img", { src: pageIcon.src }));
+      CMS.registerIcon("portfolio", () => h("img", { src: portfolioIcon.src }));
+      CMS.registerIcon("settings", () => h("img", { src: settingsIcon.src }));
+    </script>
+  </body>
+</html>

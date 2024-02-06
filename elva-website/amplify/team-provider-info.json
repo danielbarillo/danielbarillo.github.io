@@ -1,0 +1,23 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-amplifyec50ef3319134-staging-142301-authRole",
+      "UnauthRoleArn": "arn:aws:iam::279012156112:role/amplify-amplifyec50ef3319134-staging-142301-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::279012156112:role/amplify-amplifyec50ef3319134-staging-142301-authRole",
+      "Region": "eu-north-1",
+      "DeploymentBucketName": "amplify-amplifyec50ef3319134-staging-142301-deployment",
+      "UnauthRoleName": "amplify-amplifyec50ef3319134-staging-142301-unauthRole",
+      "StackName": "amplify-amplifyec50ef3319134-staging-142301",
+      "StackId": "arn:aws:cloudformation:eu-north-1:279012156112:stack/amplify-amplifyec50ef3319134-staging-142301/11ca17d0-c432-11ee-845f-06541e3f4b87",
+      "AmplifyAppId": "d1xcdfkd3t0ys6"
+    },
+    "categories": {
+      "auth": {
+        "elvaweb": {}
+      },
+      "storage": {
+        "s3elvawebstorage8c3617e6": {}
+      }
+    }
+  }
+}
