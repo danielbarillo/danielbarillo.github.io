@@ -23,6 +23,10 @@ const m2dxOptions = {
 export default defineConfig({
   site: "https://danielbarillo.github.io",
   output: "static",
+  prefetch: {
+    defaultStrategy: 'viewport',
+    prefetchAll: true,
+  },
   integrations: [vue({
     appEntrypoint: "/src/pages/_app"
   }), astroImageTools, tailwind(), icon(), Compress({
