@@ -9,8 +9,6 @@ import { t } from "@util/translate";
 import { getImageTransitionName } from "@util/helpers";
 import { Picture } from "astro-imagetools/components";
 
-const snipcartKey = import.meta.env.SNIPCART_KEY;
-
 export async function getStaticPaths() {
   /* This is a bit hacky, but I want to get routes for all images without using node:fs */
   const images = await Astro.glob("../../assets/*");

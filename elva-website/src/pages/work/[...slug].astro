@@ -13,7 +13,7 @@ export async function getStaticPaths() {
     (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
   );
   const count = posts.length;
-  return posts.map((post, index) => {
+  return posts.map((post, index) => {  
     let next: CollectionEntry<"project"> | null = null;
     let prev: CollectionEntry<"project"> | null = null;
     const archiveNav = getArchiveNav(count, index, posts);

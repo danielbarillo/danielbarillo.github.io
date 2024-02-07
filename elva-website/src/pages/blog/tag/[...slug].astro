@@ -7,7 +7,7 @@ import { getPagination, getCategoryData } from "@util/helpers";
 
 export async function getStaticPaths({ paginate }) {
   const posts = (await getCollection("blog"))
-    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .sort((a, b) => b.data?.pubDate?.valueOf() - a.data?.pubDate?.valueOf())
     .filter((post) => !!post.data?.tag);
 
   const { data } = await getEntry("config", "blog");
