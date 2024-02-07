@@ -13,8 +13,8 @@
   "description": "Through the cloud and beyond with Elva and AWS",
   "scripts": {
     "postbuild": "pagefind --site dist --output-path dist/_pagefind",
-    "start": "astro dev",
-    "build": "astro build",
+    "start": "yarn add sharp --ignore-engines && astro dev",
+    "build": "yarn add sharp --ignore-engines && astro build",
     "preview": "astro preview",
     "astro": "astro",
     "cms-proxy-server": "npx @staticcms/proxy-server"
