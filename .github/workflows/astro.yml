@@ -26,7 +26,8 @@ concurrency:
 
 env:
   BUILD_PATH: "elva-website" # default value when not using subfolders
-  # BUILD_PATH: subfolder
+  WEBSITE_LANGUAGE: "en"
+  CURRENCY: "SEK"
 
 jobs:
   build:
