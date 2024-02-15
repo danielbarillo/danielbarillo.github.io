@@ -25,7 +25,7 @@ concurrency:
   cancel-in-progress: false
 
 env:
-  BUILD_PATH: "elva-website"
+  BUILD_PATH: "elvaweb"
   WEBSITE_LANGUAGE: "en"
   CURRENCY: "SEK"
 
