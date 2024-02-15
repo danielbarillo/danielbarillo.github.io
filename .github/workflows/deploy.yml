@@ -22,7 +22,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           repository: danielbarillo/elvaweb
-          token: ${{ secrets.PRIVATE_TOKEN_GITHUB }}
           submodules: true
       - name: Install, build, and upload your site
         uses: withastro/action@v1
