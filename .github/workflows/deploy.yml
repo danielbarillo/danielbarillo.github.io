@@ -14,6 +14,11 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  BUILD_PATH: "elvaweb"
+  WEBSITE_LANGUAGE: "en"
+  CURRENCY: "SEK"
+
 jobs:
   build:
     runs-on: ubuntu-latest
