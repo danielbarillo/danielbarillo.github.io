@@ -18,11 +18,18 @@ jobs:
       - name: Checkout main repository using git
         uses: actions/checkout@v3
         with:
-          # No need to specify the repository since it uses the current repo by default
-          path: "./"
+          repository: danielbarillo/danielbarillo.github.io
+          path: ./
+          # Fetches all history for all tags and branches
           fetch-depth: 0
-          submodules: "recursive" # This option will checkout submodules
 
+      - name: Checkout submodule repository using git
+        uses: actions/checkout@v3
+        with:
+          repository: danielbarillo/elvawebs
+          path: ./
+          # Fetches all history for all tags and branches, ensuring submodule is correctly updated
+          fetch-depth: 0
   build:
     needs: setup
     runs-on: ubuntu-latest
