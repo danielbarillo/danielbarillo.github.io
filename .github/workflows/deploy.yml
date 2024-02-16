@@ -1,46 +1,46 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Trigger the workflow every time you push to the `main` branch
-  # Using a different branch name? Replace `main` with your branch’s name
   push:
     branches:
-      - master
-  # Allows you to run this workflow manually from the Actions tab on GitHub.
+      - master # Since both repos use "master" as the default branch
   workflow_dispatch:
-# Allow this job to clone the repo and create a page deployment
+
 permissions:
   contents: write
   pages: write
   id-token: write
 
-env:
-  DEFAULT_BRANCH: refs/heads/${{ github.event.repository.default_branch }}
-
 jobs:
-  build:
+  setup:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout your repository using git
+      - name: Checkout main repository using git
         uses: actions/checkout@v3
         with:
-          repository: danielbarillo/elvaweb
-          path: .
-          submodules: true
-      - name: Install, build, and upload your site
-        uses: withastro/action@v1
+          # No need to specify the repository since it uses the current repo by default
+          path: "./"
+          fetch-depth: 0
+          submodules: "recursive" # This option will checkout submodules
+
+  build:
+    needs: setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          path: . # The root location of your Astro project inside the repository. (optional)
-          node-version: 20 # The specific version of Node that should be used to build your site. Defaults to 18. (optional)
-          package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile. (optional)
+          node-version: 20 # Specify the Node.js version
+
+      - name: Install dependencies and build the site
+        run: |
+          cd elvawebs
+          pnpm install
+          pnpm build
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v1
